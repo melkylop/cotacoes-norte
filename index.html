@@ -930,7 +930,7 @@
                             <div class="contato-icone">💬</div>
                             <div class="contato-detalhes">
                                 <h3>WhatsApp</h3>
-                                <p>(97) 9------ </p>
+                                <p>(97) 9------</p>
                             </div>
                         </div>
                         
@@ -943,36 +943,36 @@
                         </div>
                     </div>
                     
-                  <div class="contato-form">
-    <form action="https://formspree.io/f/xkgyjaon" method="POST" id="form-contato">
-        <div class="form-grupo">
-            <label for="nome" class="form-label">Nome *</label>
-            <input type="text" id="nome" name="name" class="form-input" placeholder="Seu nome completo" required>
-        </div>
-        
-        <div class="form-grupo">
-            <label for="email" class="form-label">E-mail *</label>
-            <input type="email" id="email" name="email" class="form-input" placeholder="seu@email.com" required>
-        </div>
-        
-        <div class="form-grupo">
-            <label for="assunto" class="form-label">Assunto *</label>
-            <input type="text" id="assunto" name="_subject" class="form-input" placeholder="Assunto da mensagem" required>
-        </div>
-        
-        <div class="form-grupo">
-            <label for="mensagem" class="form-label">Mensagem *</label>
-            <textarea id="mensagem" name="message" class="form-textarea" placeholder="Digite sua mensagem aqui..." required></textarea>
-        </div>
-        
-        <!-- Campo anti-spam (não aparece para usuários) -->
-        <input type="text" name="_gotcha" style="display:none">
-        
-        <button type="submit" class="form-botao">
-            <i class="fas fa-paper-plane"></i> Enviar Mensagem
-        </button>
-    </form>
-</div>
+                    <div class="contato-form">
+                        <form action="https://formspree.io/f/xkgyjaon" method="POST" id="form-contato">
+                            <div class="form-grupo">
+                                <label for="nome" class="form-label">Nome *</label>
+                                <input type="text" id="nome" name="name" class="form-input" placeholder="Seu nome completo" required>
+                            </div>
+                            
+                            <div class="form-grupo">
+                                <label for="email" class="form-label">E-mail *</label>
+                                <input type="email" id="email" name="email" class="form-input" placeholder="seu@email.com" required>
+                            </div>
+                            
+                            <div class="form-grupo">
+                                <label for="assunto" class="form-label">Assunto *</label>
+                                <input type="text" id="assunto" name="_subject" class="form-input" placeholder="Assunto da mensagem" required>
+                            </div>
+                            
+                            <div class="form-grupo">
+                                <label for="mensagem" class="form-label">Mensagem *</label>
+                                <textarea id="mensagem" name="message" class="form-textarea" placeholder="Digite sua mensagem aqui..." required></textarea>
+                            </div>
+                            
+                            <!-- Campo anti-spam (não aparece para usuários) -->
+                            <input type="text" name="_gotcha" style="display:none">
+                            
+                            <button type="submit" class="form-botao">
+                                <i class="fas fa-paper-plane"></i> Enviar Mensagem
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1410,41 +1410,41 @@
                 }
             }
 
-function inicializarFormulario() {
-    const formContato = document.getElementById('form-contato');
-    
-    formContato.addEventListener('submit', function(e) {
-        // O Formspree cuida de tudo, mas podemos adicionar um loading
-        const botao = formContato.querySelector('.form-botao');
-        const textoOriginal = botao.innerHTML;
-        
-        // Mostra loading
-        botao.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
-        botao.disabled = true;
-        
-        // Restaura após 3 segundos (caso haja delay)
-        setTimeout(() => {
-            botao.innerHTML = textoOriginal;
-            botao.disabled = false;
-        }, 3000);
-    });
-}
-    // Adiciona confirmação visual quando o formulário é enviado com sucesso
-    if (window.location.search.includes('formspree=true')) {
-        alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
-    }
-}
+            function inicializarFormulario() {
+                const formContato = document.getElementById('form-contato');
+                
+                formContato.addEventListener('submit', function(e) {
+                    // O Formspree cuida de tudo, mas podemos adicionar um loading
+                    const botao = formContato.querySelector('.form-botao');
+                    const textoOriginal = botao.innerHTML;
+                    
+                    // Mostra loading
+                    botao.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+                    botao.disabled = true;
+                    
+                    // Restaura após 3 segundos (caso haja delay)
+                    setTimeout(() => {
+                        botao.innerHTML = textoOriginal;
+                        botao.disabled = false;
+                    }, 3000);
+                });
+                
+                // Adiciona confirmação visual quando o formulário é enviado com sucesso
+                if (window.location.search.includes('formspree=true')) {
+                    alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+                }
+            }
+
             // INICIAR APLICAÇÃO
             inicializarApp();
 
-            // Atualizar a cada 2 minutos
-            setInterval(async () => {
+            // Função para atualizar dados
+            async function atualizarDados() {
                 console.log('🔄 ATUALIZANDO DADOS...');
                 try {
                     const novasCotacoes = await buscarDadosPlanilha();
                     if (novasCotacoes.length > 0) {
-                        const novosDadosReais = novasCotacoes.length > 0 && 
-                                              (novasCotacoes[0].id !== 1 || novasCotacoes.length !== 12);
+                        const novosDadosReais = novasCotacoes[0].id !== 1 || novasCotacoes.length !== 12;
                         
                         cotacoes = novasCotacoes;
                         usandoDadosReais = novosDadosReais;
@@ -1455,7 +1455,13 @@ function inicializarFormulario() {
                 } catch (error) {
                     console.log('❌ Falha na atualização:', error);
                 }
-            }, 120000);
+            }
+
+            // Atualizar a cada 2 minutos
+            setInterval(atualizarDados, 120000);
+
+            // Também pode chamar manualmente se quiser
+            window.atualizarDadosManualmente = atualizarDados;
         });
     </script>
 </body>
