@@ -325,6 +325,183 @@
             color: var(--rosa);
         }
 
+        /* === NOVO: Modal de vendedores === */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.55);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+        }
+
+        .modal-overlay.ativo {
+            display: flex;
+        }
+
+        .modal {
+            background: var(--branco);
+            border-radius: var(--borda-arredondada);
+            max-width: 600px;
+            width: 95%;
+            max-height: 80vh;
+            box-shadow: var(--sombra-forte);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--cinza);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(135deg, var(--acai), var(--acai-dark));
+            color: var(--branco);
+        }
+
+        .modal-header h3 {
+            font-size: 1.2rem;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--branco);
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--transicao);
+        }
+
+        .modal-close:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .modal-body {
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .lista-vendedores {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .card-vendedor {
+            border-radius: 10px;
+            border: 1px solid var(--cinza);
+            padding: 15px;
+            background: var(--cinza-claro);
+            transition: var(--transicao);
+        }
+
+        .card-vendedor:hover {
+            box-shadow: var(--sombra);
+            transform: translateY(-2px);
+        }
+
+        .card-vendedor-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .card-vendedor-nome {
+            font-weight: 600;
+            color: var(--acai);
+            font-size: 1.1rem;
+        }
+
+        .card-vendedor-preco {
+            font-weight: 700;
+            color: var(--verde-dark);
+            font-size: 1.2rem;
+        }
+
+        .card-vendedor-info {
+            font-size: 0.9rem;
+            color: var(--cinza-escuro);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .card-vendedor-info i {
+            color: var(--acai-light);
+        }
+
+        .card-vendedor-contato {
+            font-size: 0.95rem;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid var(--cinza);
+        }
+
+        .card-vendedor-contato a {
+            color: var(--verde-dark);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 6px 12px;
+            background: var(--verde-light);
+            border-radius: 20px;
+            transition: var(--transicao);
+        }
+
+        .card-vendedor-contato a:hover {
+            background: var(--verde-dark);
+            color: var(--branco);
+            transform: scale(1.05);
+        }
+
+        .card-vendedor-obs {
+            margin-top: 8px;
+            padding: 8px;
+            background: rgba(74, 35, 90, 0.05);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-style: italic;
+        }
+
+        /* Avisos legais */
+        .aviso-legal-box {
+            background: var(--branco);
+            border-radius: var(--borda-arredondada);
+            padding: 20px;
+            margin: 10px 0 40px;
+            box-shadow: var(--sombra);
+            font-size: 0.85rem;
+            color: var(--cinza-escuro);
+            line-height: 1.6;
+        }
+
+        .aviso-legal-box h3 {
+            color: var(--acai);
+            margin-bottom: 8px;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .aviso-legal-destaque {
+            font-weight: 600;
+            color: var(--vermelho);
+        }
+
         /* Gráficos */
         .graficos-container {
             background-color: var(--branco);
@@ -645,6 +822,11 @@
             color: var(--acai);
         }
 
+        .form-label small {
+            font-weight: 400;
+            color: var(--cinza-escuro);
+        }
+
         .form-input, .form-textarea {
             width: 100%;
             padding: 12px 15px;
@@ -865,6 +1047,31 @@
             transform: translateY(-2px);
         }
 
+        /* Formulário de anúncio */
+        .anuncio-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .anuncio-box {
+            background: var(--branco);
+            border-radius: var(--borda-arredondada);
+            box-shadow: var(--sombra-forte);
+            padding: 25px 25px 30px;
+        }
+
+        .anuncio-subtitulo {
+            margin-bottom: 20px;
+            color: var(--cinza-escuro);
+            text-align: center;
+        }
+
+        .anuncio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+            gap: 15px 20px;
+        }
+
         /* Mensagem vazia */
         .mensagem-vazia {
             text-align: center;
@@ -1038,8 +1245,12 @@
                 text-align: center;
             }
 
-            .login-box {
+            .login-box, .anuncio-box {
                 padding: 30px 20px;
+            }
+
+            .anuncio-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -1121,6 +1332,11 @@
                             <i class="fas fa-heart"></i> Favoritos
                         </a>
                     </li>
+                    <li class="nav-item" id="nav-anunciar" style="display: none;">
+                        <a href="#" class="nav-link" onclick="navegarPara('anunciar')">
+                            <i class="fas fa-bullhorn"></i> Anunciar
+                        </a>
+                    </li>
                     <li class="nav-item"><a href="#" class="nav-link" onclick="navegarPara('contato')">Contato</a></li>
                     <li class="nav-item" id="nav-login">
                         <a href="#" class="nav-link" onclick="navegarPara('login')">
@@ -1170,6 +1386,38 @@
                 <!-- Cards de Cotação -->
                 <div class="cards-container" id="cards-cotacao">
                     <!-- Cards serão gerados dinamicamente pelo JavaScript -->
+                </div>
+
+                <!-- Avisos Legais -->
+                <div class="aviso-legal-box fade-in">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Aviso Importante sobre Responsabilidade</h3>
+                    <p>
+                        <span class="aviso-legal-destaque">As negociações, pagamentos, entregas e demais 
+                        transações são de inteira responsabilidade do comprador e do vendedor.</span> 
+                        O site Cotações Norte atua apenas como plataforma de divulgação 
+                        de informações e anúncios, não participando de nenhuma etapa comercial 
+                        entre as partes, nos termos da legislação civil e de consumo vigentes no Brasil 
+                        (Lei nº 8.078/1990 - Código de Defesa do Consumidor e Lei nº 10.406/2002 - Código Civil).
+                    </p>
+                    <p style="margin-top: 8px;">
+                        Em caso de dúvidas, divergências ou conflitos, as partes devem buscar solução 
+                        diretamente entre si ou pelos meios legais cabíveis, isentando o site de 
+                        qualquer responsabilidade por prejuízos materiais, morais ou de outra natureza.
+                    </p>
+
+                    <h3 style="margin-top: 15px;"><i class="fas fa-shield-alt"></i> Proteção de Dados (LGPD)</h3>
+                    <p>
+                        Os dados pessoais informados para cadastro de anúncios (como nome, CPF, cidade, telefone 
+                        e endereço) são utilizados exclusivamente para viabilizar o contato entre 
+                        interessados e vendedores. Não compartilhamos seus dados com terceiros para fins 
+                        comerciais. Você pode solicitar a correção ou remoção dos seus dados 
+                        entrando em contato pelos canais disponíveis na página de Contato, 
+                        em conformidade com a <strong>Lei Geral de Proteção de Dados (Lei nº 13.709/2018)</strong>.
+                    </p>
+                    <p style="margin-top: 8px;">
+                        Ao cadastrar um anúncio, você concorda com o tratamento dos seus dados conforme descrito acima 
+                        e declara estar ciente de seus direitos previstos na LGPD.
+                    </p>
                 </div>
                 
                 <!-- Gráficos -->
@@ -1270,6 +1518,106 @@
             </div>
         </section>
 
+        <!-- Página Anunciar Produto -->
+        <section id="anunciar" class="pagina">
+            <div class="container">
+                <div class="anuncio-container">
+                    <h1 class="pagina-titulo fade-in">
+                        <i class="fas fa-bullhorn"></i> Anunciar Produto para Venda
+                    </h1>
+
+                    <p class="anuncio-subtitulo fade-in">
+                        Preencha os dados abaixo para cadastrar sua oferta de Açaí ou Farinha. 
+                        Suas informações serão exibidas apenas para interessados na sua cidade.
+                    </p>
+
+                    <div class="anuncio-box fade-in">
+                        <form id="form-anuncio" onsubmit="salvarAnuncio(event)">
+                            <div class="anuncio-grid">
+                                <div class="form-grupo">
+                                    <label class="form-label">CPF *</label>
+                                    <input type="text" id="anuncio-cpf" class="form-input" 
+                                           placeholder="000.000.000-00" required>
+                                </div>
+
+                                <div class="form-grupo">
+                                    <label class="form-label">Nome completo *</label>
+                                    <input type="text" id="anuncio-nome" class="form-input" 
+                                           placeholder="Seu nome completo" required>
+                                </div>
+
+                                <div class="form-grupo">
+                                    <label class="form-label">Telefone / WhatsApp *</label>
+                                    <input type="tel" id="anuncio-telefone" class="form-input" 
+                                           placeholder="(00) 00000-0000" required>
+                                </div>
+
+                                <div class="form-grupo">
+                                    <label class="form-label">Cidade *</label>
+                                    <select id="anuncio-cidade" class="form-input" required>
+                                        <option value="">Selecione</option>
+                                        <option value="Manaus">Manaus</option>
+                                        <option value="Tefé">Tefé</option>
+                                        <option value="Codajas">Codajas</option>
+                                        <option value="Uarini">Uarini</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-grupo" style="grid-column: 1 / -1;">
+                                    <label class="form-label">Endereço completo *</label>
+                                    <input type="text" id="anuncio-endereco" class="form-input" 
+                                           placeholder="Rua, número, bairro, complemento" required>
+                                </div>
+
+                                <div class="form-grupo">
+                                    <label class="form-label">Segmento *</label>
+                                    <select id="anuncio-produto" class="form-input" onchange="atualizarLabelPreco()" required>
+                                        <option value="">Selecione</option>
+                                        <option value="Açaí">Açaí</option>
+                                        <option value="Farinha">Farinha</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-grupo">
+                                    <label class="form-label">Tipo *</label>
+                                    <input type="text" id="anuncio-tipo" class="form-input" 
+                                           placeholder="Ex: Fino, Grosso, Ovinha, Normal..." required>
+                                </div>
+
+                                <div class="form-grupo">
+                                    <label class="form-label" id="label-preco">Preço por litro *</label>
+                                    <input type="number" step="0.01" min="0" id="anuncio-preco" 
+                                           class="form-input" placeholder="Ex: 25.50" required>
+                                </div>
+                            </div>
+
+                            <div class="form-grupo" style="margin-top: 15px;">
+                                <label class="form-label">
+                                    Observações <small>(opcional)</small>
+                                </label>
+                                <textarea id="anuncio-observacao" class="form-textarea" 
+                                          placeholder="Ex: Entrego na área central, horário comercial, qualidade premium, etc."></textarea>
+                            </div>
+
+                            <button type="submit" class="form-botao" style="width: 100%; margin-top: 10px;">
+                                <i class="fas fa-save"></i> Salvar Anúncio
+                            </button>
+
+                            <p style="font-size: 0.8rem; color: var(--cinza-escuro); margin-top: 10px; text-align: center;">
+                                Ao cadastrar sua oferta, você concorda com os 
+                                <a href="#" onclick="navegarPara('home');event.preventDefault();" style="color: var(--acai);">
+                                    Termos de Uso
+                                </a> e a 
+                                <a href="#" onclick="navegarPara('home');event.preventDefault();" style="color: var(--acai);">
+                                    Política de Privacidade (LGPD)
+                                </a>.
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Página Contato -->
         <section id="contato" class="pagina">
             <div class="container">
@@ -1340,7 +1688,7 @@
             <div class="login-container">
                 <div class="login-box fade-in">
                     <h1 class="login-titulo">Bem-vindo!</h1>
-                    <p class="login-subtitulo">Entre para acessar seus favoritos e muito mais</p>
+                    <p class="login-subtitulo">Entre para acessar seus favoritos e anunciar produtos</p>
                     
                     <button class="btn-google" onclick="loginComGoogle()">
                         <svg width="24" height="24" viewBox="0 0 24 24">
@@ -1475,6 +1823,10 @@
                             <span class="info-label">Produtos Favoritos:</span>
                             <span class="info-valor" id="info-favoritos">0</span>
                         </div>
+                        <div class="info-item">
+                            <span class="info-label">Anúncios Ativos:</span>
+                            <span class="info-valor" id="info-anuncios">0</span>
+                        </div>
                     </div>
                     
                     <button class="btn-sair" onclick="logout()">
@@ -1498,6 +1850,21 @@
         </div>
         <div class="chat-input-container">
             <input type="text" class="chat-input" id="chat-input" placeholder="Digite sua mensagem...">
+        </div>
+    </div>
+
+    <!-- Modal de Vendedores -->
+    <div class="modal-overlay" id="modal-vendedores">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="modal-titulo">Vendedores</h3>
+                <button class="modal-close" onclick="fecharModalVendedores()">×</button>
+            </div>
+            <div class="modal-body">
+                <div id="modal-conteudo">
+                    <!-- Lista será montada via JS -->
+                </div>
+            </div>
         </div>
     </div>
 
@@ -1584,11 +1951,193 @@
         let usuarioLogado = null;
         let favoritos = [];
         let produtoSelecionadoGrafico = "Açaí";
+        let anunciosGlobal = [];
 
         const dadosGraficoFicticio = {
             datas: ["12/10", "13/10", "14/10", "15/10", "16/10", "17/10", "18/10"],
             valores: [24.5, 25.2, 26.0, 25.8, 26.5, 25.9, 25.5]
         };
+
+        /* ========= ANÚNCIOS (VENDEDORES) ========= */
+
+        function atualizarLabelPreco() {
+            const produto = document.getElementById('anuncio-produto').value;
+            const label = document.getElementById('label-preco');
+            if (produto === 'Farinha') {
+                label.textContent = 'Preço por fardo *';
+            } else {
+                label.textContent = 'Preço por litro *';
+            }
+        }
+
+        function carregarAnunciosGlobais() {
+            const salvo = localStorage.getItem('anuncios_global');
+            anunciosGlobal = salvo ? JSON.parse(salvo) : [];
+        }
+
+        function carregarAnunciosUsuario() {
+            if (!usuarioLogado) return [];
+            const key = `anuncios_${usuarioLogado.uid}`;
+            const salvo = localStorage.getItem(key);
+            return salvo ? JSON.parse(salvo) : [];
+        }
+
+        function salvarAnunciosUsuario(lista) {
+            if (!usuarioLogado) return;
+            const key = `anuncios_${usuarioLogado.uid}`;
+            localStorage.setItem(key, JSON.stringify(lista));
+        }
+
+        function sincronizarAnunciosGlobais() {
+            carregarAnunciosGlobais();
+            if (!usuarioLogado) return;
+
+            const listaUsuario = carregarAnunciosUsuario();
+            anunciosGlobal = anunciosGlobal.filter(a => a.uid !== usuarioLogado.uid);
+            anunciosGlobal = anunciosGlobal.concat(listaUsuario);
+            localStorage.setItem('anuncios_global', JSON.stringify(anunciosGlobal));
+        }
+
+        function salvarAnuncio(event) {
+            event.preventDefault();
+
+            if (!usuarioLogado) {
+                mostrarNotificacao('Faça login para anunciar produtos.', 'erro');
+                navegarPara('login');
+                return;
+            }
+
+            const cpf = document.getElementById('anuncio-cpf').value.trim();
+            const nome = document.getElementById('anuncio-nome').value.trim();
+            const telefone = document.getElementById('anuncio-telefone').value.trim();
+            const cidade = document.getElementById('anuncio-cidade').value;
+            const endereco = document.getElementById('anuncio-endereco').value.trim();
+            const produto = document.getElementById('anuncio-produto').value;
+            const tipo = document.getElementById('anuncio-tipo').value.trim();
+            const preco = parseFloat(document.getElementById('anuncio-preco').value);
+            const observacao = document.getElementById('anuncio-observacao').value.trim();
+
+            if (!cpf || !nome || !telefone || !cidade || !endereco || !produto || !tipo || !preco) {
+                mostrarNotificacao('Preencha todos os campos obrigatórios.', 'erro');
+                return;
+            }
+
+            let anunciosUsuario = carregarAnunciosUsuario();
+
+            const anuncio = {
+                id: Date.now(),
+                uid: usuarioLogado.uid,
+                cpf,
+                nome,
+                telefone,
+                cidade,
+                endereco,
+                produto,
+                tipo,
+                preco,
+                observacao,
+                criadoEm: new Date().toISOString()
+            };
+
+            anunciosUsuario.push(anuncio);
+            salvarAnunciosUsuario(anunciosUsuario);
+            sincronizarAnunciosGlobais();
+
+            document.getElementById('form-anuncio').reset();
+            atualizarLabelPreco();
+
+            mostrarNotificacao('Anúncio cadastrado com sucesso!', 'sucesso');
+
+            recalcularMediasPorAnuncios();
+            inicializarCards();
+            inicializarGrafico(produtoSelecionadoGrafico);
+            atualizarContadorAnuncios();
+        }
+
+        function recalcularMediasPorAnuncios() {
+            carregarAnunciosGlobais();
+            if (!anunciosGlobal.length) return;
+
+            cotacoes.forEach(c => {
+                const anunciosDaCidade = anunciosGlobal.filter(a =>
+                    a.produto === c.produto &&
+                    a.tipo.toLowerCase() === c.tipo.toLowerCase() &&
+                    a.cidade === c.cidade
+                );
+
+                if (anunciosDaCidade.length) {
+                    const media = anunciosDaCidade.reduce((s, a) => s + a.preco, 0) / anunciosDaCidade.length;
+                    c.preco = parseFloat(media.toFixed(2));
+                    c.variacao = 0;
+                }
+            });
+        }
+
+        function abrirModalVendedores(produto, cidade, tipo) {
+            carregarAnunciosGlobais();
+
+            const modal = document.getElementById('modal-vendedores');
+            const titulo = document.getElementById('modal-titulo');
+            const conteudo = document.getElementById('modal-conteudo');
+
+            titulo.textContent = `Vendedores de ${produto} - ${tipo} em ${cidade}`;
+
+            const listaVendedores = anunciosGlobal.filter(a =>
+                a.produto === produto &&
+                a.cidade === cidade &&
+                a.tipo.toLowerCase() === tipo.toLowerCase()
+            );
+
+            if (!listaVendedores.length) {
+                conteudo.innerHTML = `
+                    <p style="font-size:0.9rem; color:var(--cinza-escuro); text-align: center;">
+                        Ainda não há vendedores cadastrados para este produto nesta cidade e tipo.
+                        Que tal ser o primeiro a <a href="#" onclick="navegarPara('anunciar');fecharModalVendedores();return false;" style="color: var(--acai); font-weight:600;">anunciar</a>?
+                    </p>
+                `;
+            } else {
+                listaVendedores.sort((a, b) => a.preco - b.preco);
+
+                const html = `
+                    <div class="lista-vendedores">
+                        ${listaVendedores.map(v => `
+                            <div class="card-vendedor">
+                                <div class="card-vendedor-header">
+                                    <div class="card-vendedor-nome">${v.nome}</div>
+                                    <div class="card-vendedor-preco">R$ ${v.preco.toFixed(2)}</div>
+                                </div>
+                                <div class="card-vendedor-info">
+                                    <i class="fas fa-map-marker-alt"></i> ${v.cidade} | ${v.tipo}
+                                </div>
+                                <div class="card-vendedor-contato">
+                                    <a href="https://wa.me/55${v.telefone.replace(/\D/g,'')}" target="_blank">
+                                        <i class="fab fa-whatsapp"></i> ${v.telefone}
+                                    </a>
+                                </div>
+                                ${v.observacao ? `<div class="card-vendedor-obs">
+                                    <i class="fas fa-info-circle"></i> ${v.observacao}
+                                </div>` : ''}
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                conteudo.innerHTML = html;
+            }
+
+            modal.classList.add('ativo');
+        }
+
+        function fecharModalVendedores() {
+            document.getElementById('modal-vendedores').classList.remove('ativo');
+        }
+
+        function atualizarContadorAnuncios() {
+            if (!usuarioLogado) return;
+            const anuncios = carregarAnunciosUsuario();
+            document.getElementById('info-anuncios').textContent = anuncios.length;
+        }
+
+        /* ========= PLANILHA E DADOS ========= */
 
         async function buscarDadosPlanilha() {
             console.log('🔍 Buscando dados da planilha...');
@@ -1659,6 +2208,8 @@
                 { id: 12, produto: "Farinha", tipo: "Normal", cidade: "Uarini", preco: 5.80, variacao: 0.2 }
             ];
         }
+
+        /* ========= AUTENTICAÇÃO ========= */
 
         function observarAuthFirebase() {
             const auth = window._firebaseAuth;
@@ -1810,11 +2361,13 @@
             const navLogin = document.getElementById('nav-login');
             const navUser = document.getElementById('nav-user');
             const navFavoritos = document.getElementById('nav-favoritos');
+            const navAnunciar = document.getElementById('nav-anunciar');
             
             if (usuarioLogado) {
                 navLogin.style.display = 'none';
                 navUser.style.display = 'block';
                 navFavoritos.style.display = 'block';
+                navAnunciar.style.display = 'block';
                 
                 document.getElementById('user-name').textContent = usuarioLogado.nome.split(' ')[0];
                 document.getElementById('user-avatar').src = usuarioLogado.avatar;
@@ -1827,12 +2380,16 @@
                 document.getElementById('info-telefone').textContent = usuarioLogado.telefone;
                 document.getElementById('info-data').textContent = usuarioLogado.dataCadastro;
                 document.getElementById('info-favoritos').textContent = favoritos.length;
+                atualizarContadorAnuncios();
             } else {
                 navLogin.style.display = 'block';
                 navUser.style.display = 'none';
                 navFavoritos.style.display = 'none';
+                navAnunciar.style.display = 'none';
             }
         }
+
+        /* ========= FAVORITOS ========= */
 
         function carregarFavoritos() {
             if (!usuarioLogado) return;
@@ -1912,6 +2469,8 @@
             atualizarBotoesFavoritos();
         }
 
+        /* ========= NAVEGAÇÃO ========= */
+
         function navegarPara(pagina) {
             document.querySelectorAll('.pagina').forEach(p => p.classList.remove('ativa'));
             document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
@@ -1936,6 +2495,8 @@
             document.getElementById('nav-menu').classList.toggle('ativo');
         }
 
+        /* ========= NOTIFICAÇÕES ========= */
+
         function mostrarNotificacao(mensagem, tipo = 'sucesso') {
             const notif = document.createElement('div');
             notif.className = `notificacao ${tipo}`;
@@ -1953,6 +2514,8 @@
                 setTimeout(() => notif.remove(), 300);
             }, 3000);
         }
+
+        /* ========= CARDS ========= */
 
         function criarCard(cotacao) {
             const card = document.createElement('div');
@@ -1987,11 +2550,9 @@
                 </div>
             `;
             
-            // Clique no card atualiza o gráfico
             card.addEventListener('click', () => {
                 inicializarGrafico(cotacao.produto);
-                // Scroll suave até o gráfico
-                document.querySelector('.graficos-container').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                abrirModalVendedores(cotacao.produto, cotacao.cidade, cotacao.tipo);
             });
             
             return card;
@@ -2024,6 +2585,8 @@
             
             console.log('✅ CARDS CRIADOS COM SUCESSO');
         }
+
+        /* ========= GRÁFICOS ========= */
 
         function inicializarGrafico(produto = "Açaí") {
             produtoSelecionadoGrafico = produto;
@@ -2132,6 +2695,8 @@
             return { ...dadosGraficoFicticio };
         }
 
+        /* ========= FILTROS ========= */
+
         function aplicarFiltros() {
             const filtroProduto = document.getElementById('filtro-produto').value;
             const filtroCidade = document.getElementById('filtro-cidade').value;
@@ -2159,13 +2724,14 @@
                 card.style.display = mostrar ? 'block' : 'none';
             });
 
-            // Atualiza gráfico baseado no filtro
             if (filtroProduto === 'acai') {
                 inicializarGrafico("Açaí");
             } else if (filtroProduto === 'farinha') {
                 inicializarGrafico("Farinha");
             }
         }
+
+        /* ========= CHAT ========= */
 
         function inicializarChat() {
             const chatBotao = document.getElementById('chat-botao');
@@ -2230,13 +2796,15 @@
                 const mensagemLower = mensagem.toLowerCase();
                 
                 if (mensagemLower.includes('preço') || mensagemLower.includes('valor') || mensagemLower.includes('cota')) {
-                    return "Você pode ver todas as cotações atualizadas na página inicial!";
+                    return "Você pode ver todas as cotações atualizadas na página inicial! Clique nos cards para ver vendedores.";
                 } else if (mensagemLower.includes('favorito')) {
                     return "Faça login para adicionar produtos aos favoritos e acompanhar suas cotações!";
+                } else if (mensagemLower.includes('anunc') || mensagemLower.includes('vend')) {
+                    return "Faça login e clique em 'Anunciar' no menu para cadastrar seus produtos!";
                 } else if (mensagemLower.includes('login') || mensagemLower.includes('conta')) {
                     return "Clique em 'Entrar' no menu para fazer login ou criar sua conta!";
                 } else {
-                    return "Posso ajudar com informações sobre cotações, favoritos e sua conta!";
+                    return "Posso ajudar com informações sobre cotações, favoritos, anúncios e sua conta!";
                 }
             }
             
@@ -2252,6 +2820,8 @@
                 }, 600000);
             }
         }
+
+        /* ========= FORMULÁRIO ========= */
 
         function inicializarFormulario() {
             const formContato = document.getElementById('form-contato');
@@ -2274,6 +2844,8 @@
             }
         }
 
+        /* ========= INICIALIZAÇÃO ========= */
+
         async function inicializarApp() {
             console.log('🎉 PÁGINA CARREGADA - INICIANDO APLICAÇÃO');
             
@@ -2294,6 +2866,8 @@
                 cotacoes = carregarDadosExemplo();
                 usandoDadosReais = false;
             } finally {
+                carregarAnunciosGlobais();
+                recalcularMediasPorAnuncios();
                 observarAuthFirebase();
                 inicializarCards();
                 inicializarGrafico();
@@ -2346,6 +2920,7 @@
                 const novasCotacoes = await buscarDadosPlanilha();
                 if (novasCotacoes.length > 0) {
                     cotacoes = novasCotacoes;
+                    recalcularMediasPorAnuncios();
                     inicializarCards();
                     inicializarGrafico(produtoSelecionadoGrafico);
                     
