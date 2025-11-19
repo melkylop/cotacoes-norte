@@ -919,18 +919,10 @@
                 <div class="contato-container fade-in">
                     <div class="contato-info">
                         <div class="contato-item">
-                            <div class="contato-icone">📞</div>
-                            <div class="contato-detalhes">
-                                <h3>Telefone</h3>
-                                <p>(92) 1234-5678</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contato-item">
                             <div class="contato-icone">✉️</div>
                             <div class="contato-detalhes">
                                 <h3>E-mail</h3>
-                                <p>contato@cotacoesnorte.com.br</p>
+                                <p>cotacoesnorte@gmail.com</p>
                             </div>
                         </div>
                         
@@ -938,7 +930,7 @@
                             <div class="contato-icone">💬</div>
                             <div class="contato-detalhes">
                                 <h3>WhatsApp</h3>
-                                <p>(92) 98765-4321</p>
+                                <p>(97) 9------ </p>
                             </div>
                         </div>
                         
@@ -946,36 +938,36 @@
                             <div class="contato-icone">📍</div>
                             <div class="contato-detalhes">
                                 <h3>Endereço</h3>
-                                <p>Av. Eduardo Ribeiro, 123 - Centro<br>Manaus - AM, 69010-000</p>
+                                <p>Estr. da Emade, 25 - Emade<br>Tefé - AM, 69470-000</p>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="contato-form">
-                        <form id="form-contato">
-                            <div class="form-grupo">
-                                <label for="nome" class="form-label">Nome</label>
-                                <input type="text" id="nome" class="form-input" required>
-                            </div>
-                            
-                            <div class="form-grupo">
-                                <label for="email" class="form-label">E-mail</label>
-                                <input type="email" id="email" class="form-input" required>
-                            </div>
-                            
-                            <div class="form-grupo">
-                                <label for="assunto" class="form-label">Assunto</label>
-                                <input type="text" id="assunto" class="form-input" required>
-                            </div>
-                            
-                            <div class="form-grupo">
-                                <label for="mensagem" class="form-label">Mensagem</label>
-                                <textarea id="mensagem" class="form-textarea" required></textarea>
-                            </div>
-                            
-                            <button type="submit" class="form-botao">Enviar Mensagem</button>
-                        </form>
-                    </div>
+                   <div class="contato-form">
+    <form action="https://formspree.io/f/mldzdqow" method="POST" id="form-contato">
+        <div class="form-grupo">
+            <label for="nome" class="form-label">Nome</label>
+            <input type="text" id="nome" name="nome" class="form-input" required>
+        </div>
+        
+        <div class="form-grupo">
+            <label for="email" class="form-label">E-mail</label>
+            <input type="email" id="email" name="email" class="form-input" required>
+        </div>
+        
+        <div class="form-grupo">
+            <label for="assunto" class="form-label">Assunto</label>
+            <input type="text" id="assunto" name="assunto" class="form-input" required>
+        </div>
+        
+        <div class="form-grupo">
+            <label for="mensagem" class="form-label">Mensagem</label>
+            <textarea id="mensagem" name="mensagem" class="form-textarea" required></textarea>
+        </div>
+        
+        <button type="submit" class="form-botao">Enviar Mensagem</button>
+    </form>
+</div>
                 </div>
             </div>
         </section>
@@ -1413,15 +1405,31 @@
                 }
             }
 
-            function inicializarFormulario() {
-                const formContato = document.getElementById('form-contato');
-                formContato.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
-                    formContato.reset();
-                });
-            }
-
+  function inicializarFormulario() {
+    const formContato = document.getElementById('form-contato');
+    
+    formContato.addEventListener('submit', function(e) {
+        // Não precisa mais de preventDefault() porque o Formspree cuida do envio
+        
+        // Mostra loading no botão
+        const botao = formContato.querySelector('.form-botao');
+        const textoOriginal = botao.textContent;
+        botao.textContent = 'Enviando...';
+        botao.disabled = true;
+        
+        // O Formspree redireciona para uma página de confirmação
+        // Mas podemos adicionar um fallback
+        setTimeout(() => {
+            botao.textContent = textoOriginal;
+            botao.disabled = false;
+        }, 3000);
+    });
+    
+    // Adiciona confirmação visual quando o formulário é enviado com sucesso
+    if (window.location.search.includes('formspree=true')) {
+        alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+    }
+}
             // INICIAR APLICAÇÃO
             inicializarApp();
 
