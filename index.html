@@ -943,29 +943,34 @@
                         </div>
                     </div>
                     
-                   <div class="contato-form">
+                  <div class="contato-form">
     <form action="https://formspree.io/f/xkgyjaon" method="POST" id="form-contato">
         <div class="form-grupo">
-            <label for="nome" class="form-label">Nome</label>
-            <input type="text" id="nome" name="nome" class="form-input" required>
+            <label for="nome" class="form-label">Nome *</label>
+            <input type="text" id="nome" name="name" class="form-input" placeholder="Seu nome completo" required>
         </div>
         
         <div class="form-grupo">
-            <label for="email" class="form-label">E-mail</label>
-            <input type="email" id="email" name="email" class="form-input" required>
+            <label for="email" class="form-label">E-mail *</label>
+            <input type="email" id="email" name="email" class="form-input" placeholder="seu@email.com" required>
         </div>
         
         <div class="form-grupo">
-            <label for="assunto" class="form-label">Assunto</label>
-            <input type="text" id="assunto" name="assunto" class="form-input" required>
+            <label for="assunto" class="form-label">Assunto *</label>
+            <input type="text" id="assunto" name="_subject" class="form-input" placeholder="Assunto da mensagem" required>
         </div>
         
         <div class="form-grupo">
-            <label for="mensagem" class="form-label">Mensagem</label>
-            <textarea id="mensagem" name="mensagem" class="form-textarea" required></textarea>
+            <label for="mensagem" class="form-label">Mensagem *</label>
+            <textarea id="mensagem" name="message" class="form-textarea" placeholder="Digite sua mensagem aqui..." required></textarea>
         </div>
         
-        <button type="submit" class="form-botao">Enviar Mensagem</button>
+        <!-- Campo anti-spam (não aparece para usuários) -->
+        <input type="text" name="_gotcha" style="display:none">
+        
+        <button type="submit" class="form-botao">
+            <i class="fas fa-paper-plane"></i> Enviar Mensagem
+        </button>
     </form>
 </div>
                 </div>
@@ -1405,26 +1410,25 @@
                 }
             }
 
-  function inicializarFormulario() {
+function inicializarFormulario() {
     const formContato = document.getElementById('form-contato');
     
     formContato.addEventListener('submit', function(e) {
-        // Não precisa mais de preventDefault() porque o Formspree cuida do envio
-        
-        // Mostra loading no botão
+        // O Formspree cuida de tudo, mas podemos adicionar um loading
         const botao = formContato.querySelector('.form-botao');
-        const textoOriginal = botao.textContent;
-        botao.textContent = 'Enviando...';
+        const textoOriginal = botao.innerHTML;
+        
+        // Mostra loading
+        botao.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
         botao.disabled = true;
         
-        // O Formspree redireciona para uma página de confirmação
-        // Mas podemos adicionar um fallback
+        // Restaura após 3 segundos (caso haja delay)
         setTimeout(() => {
-            botao.textContent = textoOriginal;
+            botao.innerHTML = textoOriginal;
             botao.disabled = false;
         }, 3000);
     });
-    
+}
     // Adiciona confirmação visual quando o formulário é enviado com sucesso
     if (window.location.search.includes('formspree=true')) {
         alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
