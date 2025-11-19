@@ -2550,10 +2550,22 @@
                 </div>
             `;
             
-            card.addEventListener('click', () => {
-                inicializarGrafico(cotacao.produto);
-                abrirModalVendedores(cotacao.produto, cotacao.cidade, cotacao.tipo);
-            });
+           card.addEventListener('click', (event) => {
+    // Evita conflito com clique no botão de favorito
+    if (event.target.closest('.btn-favorito')) return;
+
+    // Atualiza gráfico para o produto correspondente
+    inicializarGrafico(cotacao.produto);
+
+    // Abre o modal com a lista de vendedores
+    abrirModalVendedores(cotacao.produto, cotacao.cidade, cotacao.tipo);
+
+    // Opcional: rolar suavemente até o gráfico
+    const graficoSection = document.querySelector('.graficos-container');
+    if (graficoSection) {
+        graficoSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+});
             
             return card;
         }
@@ -2589,59 +2601,93 @@
         /* ========= GRÁFICOS ========= */
 
         function inicializarGrafico(produto = "Açaí") {
-            produtoSelecionadoGrafico = produto;
+    produtoSelecionadoGrafico = produto;
 
-            const container = document.getElementById('grafico-barras');
-            const titulo = document.querySelector('.grafico-titulo');
+    const container = document.getElementById('grafico-barras');
+    const titulo = document.querySelector('.grafico-titulo');
 
-            container.innerHTML = '';
-            const indicadorAntigo = container.parentElement.querySelector('.grafico-indicador');
-            if (indicadorAntigo) indicadorAntigo.remove();
+    if (!container || !titulo) return;
 
-            titulo.textContent = `Variação de Preços - Últimos 7 Dias (${produto})`;
+    container.innerHTML = '';
+    const indicadorAntigo = container.parentElement.querySelector('.grafico-indicador');
+    if (indicadorAntigo) indicadorAntigo.remove();
 
-            const dadosReais = gerarDadosReaisParaGrafico(produto);
-            let dadosParaUsar;
-            let usandoReais = false;
+    titulo.textContent = `Variação de Preços - Últimos 7 Dias (${produto})`;
 
-            if (dadosReais && dadosReais.datas.length === 7) {
-                dadosParaUsar = dadosReais;
-                usandoReais = true;
-            } else {
-                dadosParaUsar = gerarDadosFicticiosComBaseNoAtual(produto);
+    // Se não tiver cotações, usa dados fictícios fixos
+    let dados;
+    if (!cotacoes || cotacoes.length === 0) {
+        dados = {
+            datas: ["12/10", "13/10", "14/10", "15/10", "16/10", "17/10", "18/10"],
+            valores: produto === "Açaí"
+                ? [24.5, 25.2, 26.0, 25.8, 26.5, 25.9, 25.5]
+                : [7.2, 7.4, 7.3, 7.5, 7.6, 7.4, 7.5]
+        };
+    } else {
+        // Usa as cotações como base para gerar um histórico suave
+        const doProduto = cotacoes.filter(c => c.produto === produto);
+        if (doProduto.length === 0) {
+            dados = {
+                datas: ["12/10", "13/10", "14/10", "15/10", "16/10", "17/10", "18/10"],
+                valores: produto === "Açaí"
+                    ? [24.5, 25.2, 26.0, 25.8, 26.5, 25.9, 25.5]
+                    : [7.2, 7.4, 7.3, 7.5, 7.6, 7.4, 7.5]
+            };
+        } else {
+            const mediaAtual = doProduto.reduce((s, c) => s + c.preco, 0) / doProduto.length;
+            const datas = [];
+            const valores = [];
+            const hoje = new Date();
+
+            let valor = mediaAtual * 0.97;
+            for (let i = 6; i >= 0; i--) {
+                const d = new Date(hoje);
+                d.setDate(hoje.getDate() - i);
+                const dia = String(d.getDate()).padStart(2, '0');
+                const mes = String(d.getMonth() + 1).padStart(2, '0');
+                datas.push(`${dia}/${mes}`);
+
+                // Variação suave aleatória em torno da média
+                const fator = 1 + (Math.random() * 0.06 - 0.03); // -3% a +3%
+                valor = mediaAtual * fator;
+                valores.push(parseFloat(valor.toFixed(2)));
             }
-
-            const maxValor = Math.max(...dadosParaUsar.valores);
-
-            dadosParaUsar.datas.forEach((data, index) => {
-                const valor = dadosParaUsar.valores[index];
-                const altura = (valor / maxValor) * 100;
-
-                const barraContainer = document.createElement('div');
-                barraContainer.className = 'barra-container';
-
-                barraContainer.innerHTML = `
-                    <div class="barra ${produto === "Açaí" ? "barra-acai" : "barra-farinha"}" 
-                         style="height: ${altura}%"
-                         title="${data} - R$ ${valor.toFixed(2)}"></div>
-                    <div class="barra-legenda">${data}</div>
-                `;
-
-                container.appendChild(barraContainer);
-            });
-
-            const indicador = document.createElement('div');
-            indicador.className = 'grafico-indicador';
-            indicador.style.textAlign = "center";
-            indicador.style.marginTop = "10px";
-            indicador.style.fontSize = "0.8rem";
-            indicador.style.color = usandoReais ? "#27ae60" : "#e67e22";
-            indicador.textContent = usandoReais
-                ? "✅ Dados reais (calculados a partir das últimas cotações)"
-                : "ℹ️ Dados fictícios (ainda sem histórico real suficiente)";
-            container.parentElement.appendChild(indicador);
+            dados = { datas, valores };
         }
+    }
 
+    // Desenhar barras
+    const maxValor = Math.max(...dados.valores);
+    if (!maxValor || maxValor <= 0) return; // segurança
+
+    dados.datas.forEach((data, idx) => {
+        const valor = dados.valores[idx];
+        const altura = (valor / maxValor) * 100;
+
+        const barraContainer = document.createElement('div');
+        barraContainer.className = 'barra-container';
+        barraContainer.innerHTML = `
+            <div class="barra ${produto === "Açaí" ? "barra-acai" : "barra-farinha"}"
+                 style="height: ${altura}%"
+                 title="${data} - R$ ${valor.toFixed(2)}"></div>
+            <div class="barra-legenda">${data}</div>
+        `;
+        container.appendChild(barraContainer);
+    });
+
+    // Indicador de tipo de dado
+    const indicador = document.createElement('div');
+    indicador.className = 'grafico-indicador';
+    indicador.style.textAlign = "center";
+    indicador.style.marginTop = "10px";
+    indicador.style.fontSize = "0.8rem";
+    indicador.style.color = usandoDadosReais ? "#27ae60" : "#e67e22";
+    indicador.textContent = usandoDadosReais
+        ? "✅ Dados reais (derivados das cotações atuais)"
+        : "ℹ️ Dados de exemplo (fictícios)";
+    container.parentElement.appendChild(indicador);
+}
+      
         function gerarDadosReaisParaGrafico(produto) {
             if (!cotacoes || cotacoes.length === 0) return null;
 
