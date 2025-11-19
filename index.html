@@ -32,6 +32,8 @@
             --vermelho: #e74c3c;
             --vermelho-light: #f1948a;
             --azul: #3498db;
+            --rosa: #e91e63;
+            --rosa-light: #f48fb1;
             --sombra: 0 4px 6px rgba(0, 0, 0, 0.1);
             --sombra-forte: 0 8px 15px rgba(0, 0, 0, 0.1);
             --borda-arredondada: 12px;
@@ -73,6 +75,7 @@
             font-weight: 700;
             display: flex;
             align-items: center;
+            cursor: pointer;
         }
 
         .logo span {
@@ -82,6 +85,7 @@
         .nav-menu {
             display: flex;
             list-style: none;
+            align-items: center;
         }
 
         .nav-item {
@@ -95,6 +99,9 @@
             padding: 8px 12px;
             border-radius: var(--borda-arredondada);
             transition: var(--transicao);
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .nav-link:hover {
@@ -114,6 +121,32 @@
             color: var(--branco);
             font-size: 1.5rem;
             cursor: pointer;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: var(--borda-arredondada);
+            cursor: pointer;
+            transition: var(--transicao);
+        }
+
+        .user-info:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .user-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            border: 2px solid var(--amarelo);
+        }
+
+        .user-name {
+            font-weight: 500;
         }
 
         /* Filtros */
@@ -170,6 +203,7 @@
             box-shadow: var(--sombra);
             overflow: hidden;
             transition: var(--transicao);
+            position: relative;
         }
 
         .card:hover {
@@ -251,6 +285,43 @@
         .card-variacao {
             font-size: 0.8rem;
             margin-left: 5px;
+        }
+
+        /* Botão de Favorito */
+        .btn-favorito {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--branco);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--sombra);
+            transition: var(--transicao);
+            z-index: 10;
+        }
+
+        .btn-favorito:hover {
+            transform: scale(1.1);
+        }
+
+        .btn-favorito i {
+            font-size: 1.2rem;
+            color: var(--cinza-escuro);
+            transition: var(--transicao);
+        }
+
+        .btn-favorito.favoritado i {
+            color: var(--rosa);
+        }
+
+        .btn-favorito:hover i {
+            color: var(--rosa);
         }
 
         /* Gráficos */
@@ -610,6 +681,208 @@
             box-shadow: var(--sombra);
         }
 
+        /* Página de Login */
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 200px);
+            padding: 40px 15px;
+        }
+
+        .login-box {
+            background-color: var(--branco);
+            border-radius: var(--borda-arredondada);
+            box-shadow: var(--sombra-forte);
+            padding: 40px;
+            max-width: 450px;
+            width: 100%;
+        }
+
+        .login-titulo {
+            font-size: 2rem;
+            color: var(--acai);
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .login-subtitulo {
+            text-align: center;
+            color: var(--cinza-escuro);
+            margin-bottom: 30px;
+        }
+
+        .btn-google {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--branco);
+            border: 2px solid var(--cinza);
+            border-radius: var(--borda-arredondada);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: var(--transicao);
+            color: var(--preto);
+        }
+
+        .btn-google:hover {
+            background-color: var(--cinza-claro);
+            transform: translateY(-2px);
+            box-shadow: var(--sombra);
+        }
+
+        .btn-google img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 25px 0;
+            color: var(--cinza-escuro);
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background-color: var(--cinza);
+        }
+
+        .divider span {
+            padding: 0 15px;
+        }
+
+        /* Página Minha Conta */
+        .conta-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .conta-header {
+            background: linear-gradient(135deg, var(--acai), var(--acai-dark));
+            color: var(--branco);
+            padding: 30px;
+            border-radius: var(--borda-arredondada);
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            box-shadow: var(--sombra);
+        }
+
+        .conta-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 4px solid var(--amarelo);
+        }
+
+        .conta-info-header h2 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        .conta-info-header p {
+            opacity: 0.9;
+        }
+
+        .conta-secao {
+            background-color: var(--branco);
+            border-radius: var(--borda-arredondada);
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: var(--sombra);
+        }
+
+        .conta-secao-titulo {
+            font-size: 1.4rem;
+            color: var(--acai);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--cinza);
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: var(--cinza-escuro);
+        }
+
+        .info-valor {
+            color: var(--preto);
+        }
+
+        .btn-editar {
+            background-color: var(--acai);
+            color: var(--branco);
+            border: none;
+            padding: 10px 20px;
+            border-radius: var(--borda-arredondada);
+            cursor: pointer;
+            transition: var(--transicao);
+            font-weight: 600;
+        }
+
+        .btn-editar:hover {
+            background-color: var(--acai-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-sair {
+            background-color: var(--vermelho);
+            color: var(--branco);
+            border: none;
+            padding: 12px 25px;
+            border-radius: var(--borda-arredondada);
+            cursor: pointer;
+            transition: var(--transicao);
+            font-weight: 600;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .btn-sair:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        /* Mensagem vazia */
+        .mensagem-vazia {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--cinza-escuro);
+        }
+
+        .mensagem-vazia i {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--cinza);
+        }
+
+        .mensagem-vazia h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--acai);
+        }
+
         /* Footer */
         footer {
             background-color: var(--acai-dark);
@@ -669,23 +942,22 @@
             box-shadow: 0 5px 15px rgba(241, 196, 15, 0.3);
         }
 
-        /* Efeitos específicos para cada rede social */
-        .social-icone:nth-child(1):hover { /* Facebook */
+        .social-icone:nth-child(1):hover {
             background-color: #1877f2;
             color: white;
         }
 
-        .social-icone:nth-child(2):hover { /* Instagram */
+        .social-icone:nth-child(2):hover {
             background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
             color: white;
         }
 
-        .social-icone:nth-child(3):hover { /* Twitter */
+        .social-icone:nth-child(3):hover {
             background-color: #1da1f2;
             color: white;
         }
 
-        .social-icone:nth-child(4):hover { /* WhatsApp */
+        .social-icone:nth-child(4):hover {
             background-color: #25d366;
             color: white;
         }
@@ -759,6 +1031,15 @@
                 height: 40px;
                 font-size: 1rem;
             }
+
+            .conta-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .login-box {
+                padding: 30px 20px;
+            }
         }
 
         /* Animações */
@@ -770,6 +1051,57 @@
         .fade-in {
             animation: fadeIn 0.5s ease forwards;
         }
+
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.2); }
+            50% { transform: scale(1); }
+        }
+
+        .btn-favorito.favoritado {
+            animation: heartBeat 0.5s ease;
+        }
+
+        /* Notificação */
+        .notificacao {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background-color: var(--branco);
+            padding: 15px 20px;
+            border-radius: var(--borda-arredondada);
+            box-shadow: var(--sombra-forte);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transform: translateX(400px);
+            transition: var(--transicao);
+        }
+
+        .notificacao.mostrar {
+            transform: translateX(0);
+        }
+
+        .notificacao.sucesso {
+            border-left: 4px solid var(--verde);
+        }
+
+        .notificacao.erro {
+            border-left: 4px solid var(--vermelho);
+        }
+
+        .notificacao i {
+            font-size: 1.5rem;
+        }
+
+        .notificacao.sucesso i {
+            color: var(--verde);
+        }
+
+        .notificacao.erro i {
+            color: var(--vermelho);
+        }
     </style>
 </head>
 <body>
@@ -777,13 +1109,29 @@
     <header>
         <div class="container">
             <nav class="navbar">
-                <div class="logo">Cotações <span>Norte</span></div>
-                <button class="menu-toggle">☰</button>
-                <ul class="nav-menu">
-                    <li class="nav-item"><a href="#home" class="nav-link active" data-pagina="home">Home</a></li>
-                    <li class="nav-item"><a href="#acai" class="nav-link" data-pagina="acai">Açaí</a></li>
-                    <li class="nav-item"><a href="#farinha" class="nav-link" data-pagina="farinha">Farinha</a></li>
-                    <li class="nav-item"><a href="#contato" class="nav-link" data-pagina="contato">Contato</a></li>
+                <div class="logo" onclick="navegarPara('home')">Cotações <span>Norte</span></div>
+                <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+                <ul class="nav-menu" id="nav-menu">
+                    <li class="nav-item"><a href="#" class="nav-link active" onclick="navegarPara('home')">Home</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link" onclick="navegarPara('acai')">Açaí</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link" onclick="navegarPara('farinha')">Farinha</a></li>
+                    <li class="nav-item" id="nav-favoritos" style="display: none;">
+                        <a href="#" class="nav-link" onclick="navegarPara('favoritos')">
+                            <i class="fas fa-heart"></i> Favoritos
+                        </a>
+                    </li>
+                    <li class="nav-item"><a href="#" class="nav-link" onclick="navegarPara('contato')">Contato</a></li>
+                    <li class="nav-item" id="nav-login">
+                        <a href="#" class="nav-link" onclick="navegarPara('login')">
+                            <i class="fas fa-sign-in-alt"></i> Entrar
+                        </a>
+                    </li>
+                    <li class="nav-item" id="nav-user" style="display: none;">
+                        <div class="user-info" onclick="navegarPara('conta')">
+                            <img src="" alt="Avatar" class="user-avatar" id="user-avatar">
+                            <span class="user-name" id="user-name"></span>
+                        </div>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -800,7 +1148,7 @@
                 <div class="filtros fade-in">
                     <div class="filtro-grupo">
                         <label for="filtro-produto" class="filtro-label">Produto</label>
-                        <select id="filtro-produto" class="filtro-select">
+                        <select id="filtro-produto" class="filtro-select" onchange="aplicarFiltros()">
                             <option value="todos">Todos os produtos</option>
                             <option value="acai">Açaí</option>
                             <option value="farinha">Farinha</option>
@@ -808,7 +1156,7 @@
                     </div>
                     <div class="filtro-grupo">
                         <label for="filtro-cidade" class="filtro-label">Cidade</label>
-                        <select id="filtro-cidade" class="filtro-select">
+                        <select id="filtro-cidade" class="filtro-select" onchange="aplicarFiltros()">
                             <option value="todas">Todas as cidades</option>
                             <option value="Manaus">Manaus</option>
                             <option value="Tefé">Tefé</option>
@@ -911,6 +1259,16 @@
             </div>
         </section>
 
+        <!-- Página Favoritos -->
+        <section id="favoritos" class="pagina">
+            <div class="container">
+                <h1 class="pagina-titulo fade-in"><i class="fas fa-heart" style="color: var(--rosa);"></i> Meus Favoritos</h1>
+                <div class="cards-container" id="cards-favoritos">
+                    <!-- Cards de favoritos serão gerados dinamicamente -->
+                </div>
+            </div>
+        </section>
+
         <!-- Página Contato -->
         <section id="contato" class="pagina">
             <div class="container">
@@ -965,7 +1323,6 @@
                                 <textarea id="mensagem" name="message" class="form-textarea" placeholder="Digite sua mensagem aqui..." required></textarea>
                             </div>
                             
-                            <!-- Campo anti-spam (não aparece para usuários) -->
                             <input type="text" name="_gotcha" style="display:none">
                             
                             <button type="submit" class="form-botao">
@@ -973,6 +1330,155 @@
                             </button>
                         </form>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Página Login -->
+        <section id="login" class="pagina">
+            <div class="login-container">
+                <div class="login-box fade-in">
+                    <h1 class="login-titulo">Bem-vindo!</h1>
+                    <p class="login-subtitulo">Entre para acessar seus favoritos e muito mais</p>
+                    
+                    <button class="btn-google" onclick="loginComGoogle()">
+                        <svg width="24" height="24" viewBox="0 0 24 24">
+                            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                        </svg>
+                        Continuar com Google
+                    </button>
+                    
+                    <div class="divider">
+                        <span>ou</span>
+                    </div>
+                    
+                    <form onsubmit="loginComEmail(event)">
+                        <div class="form-grupo">
+                            <label for="login-email" class="form-label">E-mail</label>
+                            <input type="email" id="login-email" class="form-input" placeholder="seu@email.com" required>
+                        </div>
+                        
+                        <div class="form-grupo">
+                            <label for="login-senha" class="form-label">Senha</label>
+                            <input type="password" id="login-senha" class="form-input" placeholder="••••••••" required>
+                        </div>
+                        
+                        <button type="submit" class="form-botao" style="width: 100%;">
+                            Entrar
+                        </button>
+                    </form>
+                    
+                    <p style="text-align: center; margin-top: 20px; color: var(--cinza-escuro);">
+                        Não tem uma conta? <a href="#" onclick="navegarPara('cadastro'); return false;" style="color: var(--acai); font-weight: 600;">Cadastre-se</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Página Cadastro -->
+        <section id="cadastro" class="pagina">
+            <div class="login-container">
+                <div class="login-box fade-in">
+                    <h1 class="login-titulo">Criar Conta</h1>
+                    <p class="login-subtitulo">Preencha seus dados para começar</p>
+                    
+                    <button class="btn-google" onclick="loginComGoogle()">
+                        <svg width="24" height="24" viewBox="0 0 24 24">
+                            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                        </svg>
+                        Cadastrar com Google
+                    </button>
+                    
+                    <div class="divider">
+                        <span>ou</span>
+                    </div>
+                    
+                    <form onsubmit="cadastrarComEmail(event)">
+                        <div class="form-grupo">
+                            <label for="cadastro-nome" class="form-label">Nome Completo</label>
+                            <input type="text" id="cadastro-nome" class="form-input" placeholder="Seu nome completo" required>
+                        </div>
+                        
+                        <div class="form-grupo">
+                            <label for="cadastro-telefone" class="form-label">Telefone</label>
+                            <input type="tel" id="cadastro-telefone" class="form-input" placeholder="(00) 00000-0000" required>
+                        </div>
+                        
+                        <div class="form-grupo">
+                            <label for="cadastro-email" class="form-label">E-mail</label>
+                            <input type="email" id="cadastro-email" class="form-input" placeholder="seu@email.com" required>
+                        </div>
+                        
+                        <div class="form-grupo">
+                            <label for="cadastro-senha" class="form-label">Senha</label>
+                            <input type="password" id="cadastro-senha" class="form-input" placeholder="••••••••" required>
+                        </div>
+                        
+                        <button type="submit" class="form-botao" style="width: 100%;">
+                            Criar Conta
+                        </button>
+                    </form>
+                    
+                    <p style="text-align: center; margin-top: 20px; color: var(--cinza-escuro);">
+                        Já tem uma conta? <a href="#" onclick="navegarPara('login'); return false;" style="color: var(--acai); font-weight: 600;">Entrar</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Página Minha Conta -->
+        <section id="conta" class="pagina">
+            <div class="container">
+                <div class="conta-container fade-in">
+                    <div class="conta-header">
+                        <img src="" alt="Avatar" class="conta-avatar" id="conta-avatar">
+                        <div class="conta-info-header">
+                            <h2 id="conta-nome">Nome do Usuário</h2>
+                            <p id="conta-email">email@exemplo.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="conta-secao">
+                        <h3 class="conta-secao-titulo">
+                            <i class="fas fa-user"></i> Informações Pessoais
+                        </h3>
+                        <div class="info-item">
+                            <span class="info-label">Nome:</span>
+                            <span class="info-valor" id="info-nome">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">E-mail:</span>
+                            <span class="info-valor" id="info-email">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Telefone:</span>
+                            <span class="info-valor" id="info-telefone">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Membro desde:</span>
+                            <span class="info-valor" id="info-data">-</span>
+                        </div>
+                    </div>
+                    
+                    <div class="conta-secao">
+                        <h3 class="conta-secao-titulo">
+                            <i class="fas fa-heart"></i> Estatísticas
+                        </h3>
+                        <div class="info-item">
+                            <span class="info-label">Produtos Favoritos:</span>
+                            <span class="info-valor" id="info-favoritos">0</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn-sair" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i> Sair da Conta
+                    </button>
                 </div>
             </div>
         </section>
@@ -1018,10 +1524,10 @@
                 </div>
                 
                 <div class="footer-links">
-                    <a href="#home" class="footer-link">Home</a>
-                    <a href="#acai" class="footer-link">Açaí</a>
-                    <a href="#farinha" class="footer-link">Farinha</a>
-                    <a href="#contato" class="footer-link">Contato</a>
+                    <a href="#" onclick="navegarPara('home')" class="footer-link">Home</a>
+                    <a href="#" onclick="navegarPara('acai')" class="footer-link">Açaí</a>
+                    <a href="#" onclick="navegarPara('farinha')" class="footer-link">Farinha</a>
+                    <a href="#" onclick="navegarPara('contato')" class="footer-link">Contato</a>
                 </div>
                 
                 <p class="footer-copyright">© 2025 Cotações Norte. Todos os direitos reservados.</p>
@@ -1029,18 +1535,66 @@
         </div>
     </footer>
 
+    <!-- ==================== FIREBASE SDK ==================== -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { 
+            getAuth, 
+            GoogleAuthProvider, 
+            signInWithPopup,
+            signInWithEmailAndPassword,
+            createUserWithEmailAndPassword,
+            signOut,
+            onAuthStateChanged,
+            updateProfile
+        } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+        // ===== COLE AQUI SUA CONFIGURAÇÃO DO FIREBASE =====
+        const firebaseConfig = {
+            apiKey: "AIzaSyDaOTYIz7T2zPZm8CsjO6Giekr9GgQa2Lc",
+            authDomain: "cotacoes-norte.firebaseapp.com",
+            projectId: "cotacoes-norte",
+            storageBucket: "cotacoes-norte.firebasestorage.app",
+            messagingSenderId: "669287467202",
+            appId: "1:669287467202:web:12fcf0f2493b0442a5935b"
+        };
+        // ==================================================
+
+        // Inicializar Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const provider = new GoogleAuthProvider();
+
+        // Expor para uso global
+        window._firebaseAuth = auth;
+        window._googleProvider = provider;
+        window._signInWithPopup = signInWithPopup;
+        window._signInWithEmailAndPassword = signInWithEmailAndPassword;
+        window._createUserWithEmailAndPassword = createUserWithEmailAndPassword;
+        window._updateProfile = updateProfile;
+        window._signOut = signOut;
+        window._onAuthStateChanged = onAuthStateChanged;
+
+        console.log('🔥 Firebase inicializado com sucesso!');
+    </script>
+
+    <!-- ==================== SCRIPT PRINCIPAL ==================== -->
     <script>
         // ==================== CONFIGURAÇÃO GOOGLE SHEETS ====================
         const PLANILHA_ID = '1N1F1n7WBYan3leFs-NHftffi7B90-VT-sMJqKBgg-YU';
+
+        // ==================== VARIÁVEIS GLOBAIS ====================
+        let cotacoes = [];
+        let usandoDadosReais = false;
+        let usuarioLogado = null;
+        let favoritos = [];
 
         // ==================== FUNÇÃO PARA PRODUÇÃO ====================
         async function buscarDadosPlanilha() {
             console.log('🔍 Buscando dados da planilha...');
             
             try {
-                // URL direta - funciona em hospedagem real
                 const url = `https://docs.google.com/spreadsheets/d/${PLANILHA_ID}/gviz/tq?tqx=out:json`;
-                
                 const response = await fetch(url);
                 
                 if (!response.ok) {
@@ -1115,354 +1669,632 @@
             farinha: [7.8, 7.5, 7.9, 8.2, 8.0, 7.7, 7.9]
         };
 
-        // ==================== APLICAÇÃO PRINCIPAL ====================
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('🎉 PÁGINA CARREGADA - INICIANDO APLICAÇÃO');
-            
-            const navLinks = document.querySelectorAll('.nav-link');
-            const paginas = document.querySelectorAll('.pagina');
-            const menuToggle = document.querySelector('.menu-toggle');
-            const navMenu = document.querySelector('.nav-menu');
-            
-            let cotacoes = [];
-            let usandoDadosReais = false;
-            
-            async function inicializarApp() {
-                mostrarLoading(true);
-                console.log('🚀 INICIANDO CARREGAMENTO...');
-                
-                try {
-                    cotacoes = await buscarDadosPlanilha();
-                    
-                    // Detecta se são dados reais (IDs diferentes dos exemplos)
-                    usandoDadosReais = cotacoes.length > 0 && 
-                                      (cotacoes[0].id !== 1 || cotacoes.length !== 12);
-                    
-                    if (usandoDadosReais) {
-                        console.log('✅ DADOS REAIS CARREGADOS DA PLANILHA!');
-                    } else {
-                        console.log('⚠️ USANDO DADOS DE EXEMPLO');
-                    }
-                    
-                } catch (error) {
-                    console.error('❌ FALHA:', error);
-                    cotacoes = carregarDadosExemplo();
-                    usandoDadosReais = false;
-                } finally {
-                    inicializarNavegacao();
-                    inicializarCards();
-                    inicializarGrafico();
-                    inicializarFiltros();
-                    inicializarChat();
-                    inicializarFormulario();
-                    mostrarLoading(false);
-                    console.log('🏁 APLICAÇÃO INICIALIZADA');
-                }
-            }
+        // ==================== SISTEMA DE AUTENTICAÇÃO COM FIREBASE ====================
+        
+        // Observar mudanças no estado de autenticação
+        function observarAuthFirebase() {
+            const auth = window._firebaseAuth;
+            const onAuthStateChanged = window._onAuthStateChanged;
 
-            function mostrarLoading(mostrar) {
-                if (mostrar) {
-                    const loader = document.createElement('div');
-                    loader.id = 'global-loader';
-                    loader.innerHTML = `
-                        <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-                                    background: rgba(74, 35, 90, 0.95); display: flex; justify-content: center; 
-                                    align-items: center; z-index: 9999; color: white; font-family: Arial;">
-                            <div style="background: white; padding: 30px; border-radius: 15px; text-align: center; color: #4a235a; max-width: 400px;">
-                                <div style="font-size: 1.5rem; margin-bottom: 15px; font-weight: bold;">
-                                    🍇 Cotações Norte
-                                </div>
-                                <div style="margin-bottom: 20px; font-size: 1.1rem;">
-                                    Conectando com a planilha...
-                                </div>
-                                <div style="width: 50px; height: 50px; border: 5px solid #f3f3f3; 
-                                            border-top: 5px solid #4a235a; border-radius: 50%; 
-                                            animation: spin 1s linear infinite; margin: 0 auto;"></div>
-                            </div>
-                        </div>
-                        <style>
-                            @keyframes spin {
-                                0% { transform: rotate(0deg); }
-                                100% { transform: rotate(360deg); }
-                            }
-                        </style>
-                    `;
-                    document.body.appendChild(loader);
+            onAuthStateChanged(auth, (user) => {
+                if (user) {
+                    const usuario = {
+                        nome: user.displayName || user.email.split('@')[0],
+                        email: user.email,
+                        avatar: user.photoURL || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.displayName || user.email)}&background=4a235a&color=fff`,
+                        telefone: user.phoneNumber || "-",
+                        dataCadastro: new Date(user.metadata.creationTime).toLocaleDateString('pt-BR'),
+                        uid: user.uid
+                    };
+                    
+                    usuarioLogado = usuario;
+                    localStorage.setItem('usuarioLogado', JSON.stringify(usuario));
+                    carregarFavoritos();
+                    atualizarInterfaceUsuario();
+                    
+                    console.log('✅ Usuário autenticado:', usuario.nome);
                 } else {
-                    const existingLoader = document.getElementById('global-loader');
-                    if (existingLoader) {
-                        existingLoader.remove();
-                    }
+                    usuarioLogado = null;
+                    localStorage.removeItem('usuarioLogado');
+                    atualizarInterfaceUsuario();
+                    console.log('❌ Nenhum usuário autenticado');
+                }
+            });
+        }
+
+        // Login com Google
+        async function loginComGoogle() {
+            const auth = window._firebaseAuth;
+            const provider = window._googleProvider;
+            const signInWithPopup = window._signInWithPopup;
+
+            try {
+                mostrarNotificacao('Abrindo janela de login...', 'sucesso');
+                const result = await signInWithPopup(auth, provider);
+                const user = result.user;
+
+                mostrarNotificacao(`Bem-vindo, ${user.displayName}!`, 'sucesso');
+                navegarPara('home');
+            } catch (error) {
+                console.error('Erro no login com Google:', error);
+                
+                if (error.code === 'auth/popup-closed-by-user') {
+                    mostrarNotificacao('Login cancelado pelo usuário', 'erro');
+                } else if (error.code === 'auth/popup-blocked') {
+                    mostrarNotificacao('Pop-up bloqueado! Permita pop-ups para este site', 'erro');
+                } else {
+                    mostrarNotificacao('Erro ao fazer login. Tente novamente.', 'erro');
                 }
             }
+        }
 
-            function inicializarNavegacao() {
-                navLinks.forEach(link => {
-                    link.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        navLinks.forEach(l => l.classList.remove('active'));
-                        this.classList.add('active');
-                        paginas.forEach(pagina => pagina.classList.remove('ativa'));
-                        const paginaId = this.getAttribute('data-pagina');
-                        document.getElementById(paginaId).classList.add('ativa');
-                        if (navMenu.classList.contains('ativo')) {
-                            navMenu.classList.remove('ativo');
-                        }
-                    });
-                });
-                
-                menuToggle.addEventListener('click', function() {
-                    navMenu.classList.toggle('ativo');
-                });
-            }
+        // Login com Email e Senha
+        async function loginComEmail(event) {
+            event.preventDefault();
+            const auth = window._firebaseAuth;
+            const signInWithEmailAndPassword = window._signInWithEmailAndPassword;
+            
+            const email = document.getElementById('login-email').value;
+            const senha = document.getElementById('login-senha').value;
 
-            function inicializarCards() {
-                const container = document.getElementById('cards-cotacao');
-                container.innerHTML = '';
+            try {
+                await signInWithEmailAndPassword(auth, email, senha);
+                mostrarNotificacao('Login realizado com sucesso!', 'sucesso');
+                navegarPara('home');
+            } catch (error) {
+                console.error('Erro no login:', error);
                 
-                console.log('🎴 CRIANDO CARDS:', cotacoes.length, 'cotações');
-                
-                if (cotacoes.length === 0) {
-                    container.innerHTML = `
-                        <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: #666;">
-                            <div style="font-size: 3rem; margin-bottom: 20px;">📊</div>
-                            <h3>Nenhuma cotação disponível</h3>
-                            <p>Verifique a conexão com a planilha</p>
-                            <button onclick="location.reload()" style="margin-top: 15px; padding: 10px 20px; background: #4a235a; color: white; border: none; border-radius: 8px; cursor: pointer;">
-                                🔄 Tentar Novamente
-                            </button>
-                        </div>
-                    `;
-                    return;
+                if (error.code === 'auth/user-not-found') {
+                    mostrarNotificacao('Usuário não encontrado', 'erro');
+                } else if (error.code === 'auth/wrong-password') {
+                    mostrarNotificacao('Senha incorreta', 'erro');
+                } else if (error.code === 'auth/invalid-email') {
+                    mostrarNotificacao('E-mail inválido', 'erro');
+                } else {
+                    mostrarNotificacao('Erro ao fazer login', 'erro');
                 }
+            }
+        }
+
+        // Cadastro com Email e Senha
+        async function cadastrarComEmail(event) {
+            event.preventDefault();
+            const auth = window._firebaseAuth;
+            const createUserWithEmailAndPassword = window._createUserWithEmailAndPassword;
+            const updateProfile = window._updateProfile;
+            
+            const nome = document.getElementById('cadastro-nome').value;
+            const email = document.getElementById('cadastro-email').value;
+            const senha = document.getElementById('cadastro-senha').value;
+            const telefone = document.getElementById('cadastro-telefone').value;
+
+            try {
+                const userCredential = await createUserWithEmailAndPassword(auth, email, senha);
                 
-                cotacoes.forEach(cotacao => {
-                    const card = document.createElement('div');
-                    card.className = `card ${cotacao.produto === 'Açaí' ? 'card-acai' : 'card-farinha'}`;
-                    
-                    const classePreco = cotacao.variacao < 0 ? 'preco-baixo' : 'preco-alto';
-                    const simboloVariacao = cotacao.variacao < 0 ? '↓' : '↑';
-                    
-                    card.innerHTML = `
-                        <div class="card-header">
-                            <div class="card-titulo">${cotacao.produto}</div>
-                            <div class="card-tipo">${cotacao.tipo}</div>
-                        </div>
-                        <div class="card-body">
-                            <div class="card-cidade">
-                                <div class="card-cidade-nome">${cotacao.cidade}</div>
-                                <div class="card-preco ${classePreco}">
-                                    R$ ${cotacao.preco.toFixed(2)}
-                                    <span class="card-variacao">${simboloVariacao} ${Math.abs(cotacao.variacao).toFixed(1)}%</span>
-                                </div>
-                            </div>
-                            <div style="font-size: 0.7rem; color: ${usandoDadosReais ? '#27ae60' : '#e74c3c'}; margin-top: 5px; font-style: italic;">
-                                ${usandoDadosReais ? '✅ Dados reais da planilha' : '⚠️ Dados de exemplo - Abra via localhost'}
-                            </div>
-                        </div>
-                    `;
-                    
-                    container.appendChild(card);
+                // Atualizar perfil com nome
+                await updateProfile(userCredential.user, {
+                    displayName: nome
                 });
-                
-                console.log('✅ CARDS CRIADOS COM SUCESSO');
-            }
 
-            function inicializarGrafico() {
-                const container = document.getElementById('grafico-barras');
-                const maxValor = Math.max(...dadosGrafico.acai, ...dadosGrafico.farinha);
-                container.innerHTML = '';
-                
-                dadosGrafico.datas.forEach((data, index) => {
-                    const alturaAcai = (dadosGrafico.acai[index] / maxValor) * 100;
-                    const alturaFarinha = (dadosGrafico.farinha[index] / maxValor) * 100;
-                    
-                    const barraContainer = document.createElement('div');
-                    barraContainer.className = 'barra-container';
-                    
-                    barraContainer.innerHTML = `
-                        <div class="barra barra-acai" style="height: ${alturaAcai}%"></div>
-                        <div class="barra barra-farinha" style="height: ${alturaFarinha}%"></div>
-                        <div class="barra-legenda">${data}</div>
-                    `;
-                    
-                    container.appendChild(barraContainer);
-                });
-            }
+                // Salvar telefone no localStorage (Firebase não tem campo nativo para telefone)
+                const usuario = {
+                    nome: nome,
+                    email: email,
+                    avatar: `https://ui-avatars.com/api/?name=${encodeURIComponent(nome)}&background=4a235a&color=fff`,
+                    telefone: telefone,
+                    dataCadastro: new Date().toLocaleDateString('pt-BR'),
+                    uid: userCredential.user.uid
+                };
+                localStorage.setItem('usuarioLogado', JSON.stringify(usuario));
 
-            function inicializarFiltros() {
-                const filtroProduto = document.getElementById('filtro-produto');
-                const filtroCidade = document.getElementById('filtro-cidade');
+                mostrarNotificacao('Conta criada com sucesso!', 'sucesso');
+                navegarPara('home');
+            } catch (error) {
+                console.error('Erro no cadastro:', error);
                 
-                filtroProduto.addEventListener('change', aplicarFiltros);
-                filtroCidade.addEventListener('change', aplicarFiltros);
+                if (error.code === 'auth/email-already-in-use') {
+                    mostrarNotificacao('Este e-mail já está em uso', 'erro');
+                } else if (error.code === 'auth/weak-password') {
+                    mostrarNotificacao('Senha muito fraca (mínimo 6 caracteres)', 'erro');
+                } else if (error.code === 'auth/invalid-email') {
+                    mostrarNotificacao('E-mail inválido', 'erro');
+                } else {
+                    mostrarNotificacao('Erro ao criar conta', 'erro');
+                }
             }
+        }
 
-            function aplicarFiltros() {
-                const filtroProduto = document.getElementById('filtro-produto').value;
-                const filtroCidade = document.getElementById('filtro-cidade').value;
+        // Logout
+        async function logout() {
+            const auth = window._firebaseAuth;
+            const signOut = window._signOut;
+
+            try {
+                await signOut(auth);
+                localStorage.removeItem('usuarioLogado');
+                localStorage.removeItem('favoritos');
+                usuarioLogado = null;
+                favoritos = [];
+                atualizarInterfaceUsuario();
+                mostrarNotificacao('Logout realizado com sucesso!', 'sucesso');
+                navegarPara('home');
+            } catch (error) {
+                console.error('Erro ao fazer logout:', error);
+                mostrarNotificacao('Erro ao sair da conta', 'erro');
+            }
+        }
+
+        function atualizarInterfaceUsuario() {
+            const navLogin = document.getElementById('nav-login');
+            const navUser = document.getElementById('nav-user');
+            const navFavoritos = document.getElementById('nav-favoritos');
+            
+            if (usuarioLogado) {
+                navLogin.style.display = 'none';
+                navUser.style.display = 'block';
+                navFavoritos.style.display = 'block';
                 
-                const cards = document.querySelectorAll('.card');
+                document.getElementById('user-name').textContent = usuarioLogado.nome.split(' ')[0];
+                document.getElementById('user-avatar').src = usuarioLogado.avatar;
                 
-                cards.forEach(card => {
-                    const produto = card.querySelector('.card-titulo').textContent;
-                    const cidade = card.querySelector('.card-cidade-nome').textContent;
-                    
-                    let mostrar = true;
-                    
-                    if (filtroProduto !== 'todos') {
-                        if (filtroProduto === 'acai' && produto !== 'Açaí') {
-                            mostrar = false;
-                        } else if (filtroProduto === 'farinha' && produto !== 'Farinha') {
-                            mostrar = false;
-                        }
-                    }
-                    
-                    if (filtroCidade !== 'todas' && cidade !== filtroCidade) {
+                // Atualizar página de conta
+                document.getElementById('conta-nome').textContent = usuarioLogado.nome;
+                document.getElementById('conta-email').textContent = usuarioLogado.email;
+                document.getElementById('conta-avatar').src = usuarioLogado.avatar;
+                document.getElementById('info-nome').textContent = usuarioLogado.nome;
+                document.getElementById('info-email').textContent = usuarioLogado.email;
+                document.getElementById('info-telefone').textContent = usuarioLogado.telefone;
+                document.getElementById('info-data').textContent = usuarioLogado.dataCadastro;
+                document.getElementById('info-favoritos').textContent = favoritos.length;
+            } else {
+                navLogin.style.display = 'block';
+                navUser.style.display = 'none';
+                navFavoritos.style.display = 'none';
+            }
+        }
+
+        // ==================== SISTEMA DE FAVORITOS ====================
+        function carregarFavoritos() {
+            if (!usuarioLogado) return;
+            
+            const favKey = `favoritos_${usuarioLogado.uid}`;
+            const favStorage = localStorage.getItem(favKey);
+            if (favStorage) {
+                favoritos = JSON.parse(favStorage);
+            }
+        }
+
+        function salvarFavoritos() {
+            if (!usuarioLogado) return;
+            
+            const favKey = `favoritos_${usuarioLogado.uid}`;
+            localStorage.setItem(favKey, JSON.stringify(favoritos));
+            document.getElementById('info-favoritos').textContent = favoritos.length;
+        }
+
+        function toggleFavorito(cotacaoId) {
+            if (!usuarioLogado) {
+                mostrarNotificacao('Faça login para adicionar favoritos!', 'erro');
+                setTimeout(() => navegarPara('login'), 1500);
+                return;
+            }
+            
+            const index = favoritos.indexOf(cotacaoId);
+            if (index > -1) {
+                favoritos.splice(index, 1);
+                mostrarNotificacao('Removido dos favoritos!', 'sucesso');
+            } else {
+                favoritos.push(cotacaoId);
+                mostrarNotificacao('Adicionado aos favoritos!', 'sucesso');
+            }
+            
+            salvarFavoritos();
+            atualizarBotoesFavoritos();
+            
+            if (document.getElementById('favoritos').classList.contains('ativa')) {
+                renderizarFavoritos();
+            }
+        }
+
+        function atualizarBotoesFavoritos() {
+            document.querySelectorAll('.btn-favorito').forEach(btn => {
+                const cotacaoId = parseInt(btn.dataset.id);
+                if (favoritos.includes(cotacaoId)) {
+                    btn.classList.add('favoritado');
+                } else {
+                    btn.classList.remove('favoritado');
+                }
+            });
+        }
+
+        function renderizarFavoritos() {
+            const container = document.getElementById('cards-favoritos');
+            container.innerHTML = '';
+            
+            if (favoritos.length === 0) {
+                container.innerHTML = `
+                    <div class="mensagem-vazia" style="grid-column: 1 / -1;">
+                        <i class="fas fa-heart-broken"></i>
+                        <h3>Nenhum favorito ainda</h3>
+                        <p>Adicione produtos aos favoritos para acompanhar suas cotações!</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            const cotacoesFavoritas = cotacoes.filter(c => favoritos.includes(c.id));
+            
+            cotacoesFavoritas.forEach(cotacao => {
+                const card = criarCard(cotacao);
+                container.appendChild(card);
+            });
+            
+            atualizarBotoesFavoritos();
+        }
+
+        // ==================== NAVEGAÇÃO ====================
+        function navegarPara(pagina) {
+            document.querySelectorAll('.pagina').forEach(p => p.classList.remove('ativa'));
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            
+            document.getElementById(pagina).classList.add('ativa');
+            document.querySelectorAll(`[onclick*="${pagina}"]`).forEach(l => {
+                if (l.classList.contains('nav-link')) {
+                    l.classList.add('active');
+                }
+            });
+            
+            document.getElementById('nav-menu').classList.remove('ativo');
+            
+            if (pagina === 'favoritos') {
+                renderizarFavoritos();
+            }
+            
+            window.scrollTo(0, 0);
+        }
+
+        function toggleMenu() {
+            document.getElementById('nav-menu').classList.toggle('ativo');
+        }
+
+        // ==================== NOTIFICAÇÕES ====================
+        function mostrarNotificacao(mensagem, tipo = 'sucesso') {
+            const notif = document.createElement('div');
+            notif.className = `notificacao ${tipo}`;
+            notif.innerHTML = `
+                <i class="fas fa-${tipo === 'sucesso' ? 'check-circle' : 'exclamation-circle'}"></i>
+                <span>${mensagem}</span>
+            `;
+            
+            document.body.appendChild(notif);
+            
+            setTimeout(() => notif.classList.add('mostrar'), 100);
+            
+            setTimeout(() => {
+                notif.classList.remove('mostrar');
+                setTimeout(() => notif.remove(), 300);
+            }, 3000);
+        }
+
+        // ==================== CRIAR CARD ====================
+        function criarCard(cotacao) {
+            const card = document.createElement('div');
+            card.className = `card ${cotacao.produto === 'Açaí' ? 'card-acai' : 'card-farinha'}`;
+            
+            const classePreco = cotacao.variacao < 0 ? 'preco-baixo' : 'preco-alto';
+            const simboloVariacao = cotacao.variacao < 0 ? '↓' : '↑';
+            
+            card.innerHTML = `
+                ${usuarioLogado ? `
+                    <button class="btn-favorito ${favoritos.includes(cotacao.id) ? 'favoritado' : ''}" 
+                            data-id="${cotacao.id}" 
+                            onclick="toggleFavorito(${cotacao.id})">
+                        <i class="fas fa-heart"></i>
+                    </button>
+                ` : ''}
+                <div class="card-header">
+                    <div class="card-titulo">${cotacao.produto}</div>
+                    <div class="card-tipo">${cotacao.tipo}</div>
+                </div>
+                <div class="card-body">
+                    <div class="card-cidade">
+                        <div class="card-cidade-nome">${cotacao.cidade}</div>
+                        <div class="card-preco ${classePreco}">
+                            R$ ${cotacao.preco.toFixed(2)}
+                            <span class="card-variacao">${simboloVariacao} ${Math.abs(cotacao.variacao).toFixed(1)}%</span>
+                        </div>
+                    </div>
+                    <div style="font-size: 0.7rem; color: ${usandoDadosReais ? '#27ae60' : '#e74c3c'}; margin-top: 5px; font-style: italic;">
+                        ${usandoDadosReais ? '✅ Dados reais da planilha' : '⚠️ Dados de exemplo'}
+                    </div>
+                </div>
+            `;
+            
+            return card;
+        }
+
+        // ==================== INICIALIZAR CARDS ====================
+        function inicializarCards() {
+            const container = document.getElementById('cards-cotacao');
+            container.innerHTML = '';
+            
+            console.log('🎴 CRIANDO CARDS:', cotacoes.length, 'cotações');
+            
+            if (cotacoes.length === 0) {
+                container.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: #666;">
+                        <div style="font-size: 3rem; margin-bottom: 20px;">📊</div>
+                        <h3>Nenhuma cotação disponível</h3>
+                        <p>Verifique a conexão com a planilha</p>
+                        <button onclick="location.reload()" style="margin-top: 15px; padding: 10px 20px; background: #4a235a; color: white; border: none; border-radius: 8px; cursor: pointer;">
+                            🔄 Tentar Novamente
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+            
+            cotacoes.forEach(cotacao => {
+                const card = criarCard(cotacao);
+                container.appendChild(card);
+            });
+            
+            console.log('✅ CARDS CRIADOS COM SUCESSO');
+        }
+
+        // ==================== INICIALIZAR GRÁFICO ====================
+        function inicializarGrafico() {
+            const container = document.getElementById('grafico-barras');
+            const maxValor = Math.max(...dadosGrafico.acai, ...dadosGrafico.farinha);
+            container.innerHTML = '';
+            
+            dadosGrafico.datas.forEach((data, index) => {
+                const alturaAcai = (dadosGrafico.acai[index] / maxValor) * 100;
+                const alturaFarinha = (dadosGrafico.farinha[index] / maxValor) * 100;
+                
+                const barraContainer = document.createElement('div');
+                barraContainer.className = 'barra-container';
+                
+                barraContainer.innerHTML = `
+                    <div class="barra barra-acai" style="height: ${alturaAcai}%"></div>
+                    <div class="barra barra-farinha" style="height: ${alturaFarinha}%"></div>
+                    <div class="barra-legenda">${data}</div>
+                `;
+                
+                container.appendChild(barraContainer);
+            });
+        }
+
+        // ==================== APLICAR FILTROS ====================
+        function aplicarFiltros() {
+            const filtroProduto = document.getElementById('filtro-produto').value;
+            const filtroCidade = document.getElementById('filtro-cidade').value;
+            
+            const cards = document.querySelectorAll('#cards-cotacao .card');
+            
+            cards.forEach(card => {
+                const produto = card.querySelector('.card-titulo').textContent;
+                const cidade = card.querySelector('.card-cidade-nome').textContent;
+                
+                let mostrar = true;
+                
+                if (filtroProduto !== 'todos') {
+                    if (filtroProduto === 'acai' && produto !== 'Açaí') {
+                        mostrar = false;
+                    } else if (filtroProduto === 'farinha' && produto !== 'Farinha') {
                         mostrar = false;
                     }
-                    
-                    card.style.display = mostrar ? 'block' : 'none';
-                });
-            }
+                }
+                
+                if (filtroCidade !== 'todas' && cidade !== filtroCidade) {
+                    mostrar = false;
+                }
+                
+                card.style.display = mostrar ? 'block' : 'none';
+            });
+        }
 
-            function inicializarChat() {
-                const chatBotao = document.getElementById('chat-botao');
-                const chatContainer = document.getElementById('chat-container');
-                const chatFechar = document.getElementById('chat-fechar');
-                const chatInput = document.getElementById('chat-input');
-                const chatMensagens = document.getElementById('chat-mensagens');
+        // ==================== CHAT ====================
+        function inicializarChat() {
+            const chatBotao = document.getElementById('chat-botao');
+            const chatContainer = document.getElementById('chat-container');
+            const chatFechar = document.getElementById('chat-fechar');
+            const chatInput = document.getElementById('chat-input');
+            const chatMensagens = document.getElementById('chat-mensagens');
+            
+            let timeoutChat;
+            
+            adicionarMensagemIA("Olá! Eu sou a IARA. Como posso ajudar?");
+            
+            chatBotao.addEventListener('click', function() {
+                chatContainer.classList.add('aberto');
+                reiniciarTimeout();
+            });
+            
+            chatFechar.addEventListener('click', function() {
+                chatContainer.classList.remove('aberto');
+                clearTimeout(timeoutChat);
+            });
+            
+            chatInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    enviarMensagem();
+                }
+            });
+            
+            function enviarMensagem() {
+                const mensagem = chatInput.value.trim();
                 
-                let timeoutChat;
-                
-                adicionarMensagemIA("Olá! Eu sou a IARA. Para dados em tempo real, abra a página via localhost. Como posso ajudar?");
-                
-                chatBotao.addEventListener('click', function() {
-                    chatContainer.classList.add('aberto');
+                if (mensagem) {
+                    adicionarMensagemUsuario(mensagem);
+                    chatInput.value = '';
+                    
+                    setTimeout(function() {
+                        const resposta = gerarRespostaIA(mensagem);
+                        adicionarMensagemIA(resposta);
+                    }, 1000);
+                    
                     reiniciarTimeout();
-                });
-                
-                chatFechar.addEventListener('click', function() {
-                    chatContainer.classList.remove('aberto');
-                    clearTimeout(timeoutChat);
-                });
-                
-                chatInput.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') {
-                        enviarMensagem();
-                    }
-                });
-                
-                function enviarMensagem() {
-                    const mensagem = chatInput.value.trim();
-                    
-                    if (mensagem) {
-                        adicionarMensagemUsuario(mensagem);
-                        chatInput.value = '';
-                        
-                        setTimeout(function() {
-                            const resposta = gerarRespostaIA(mensagem);
-                            adicionarMensagemIA(resposta);
-                        }, 1000);
-                        
-                        reiniciarTimeout();
-                    }
-                }
-                
-                function adicionarMensagemIA(texto) {
-                    const mensagemDiv = document.createElement('div');
-                    mensagemDiv.className = 'mensagem mensagem-ia';
-                    mensagemDiv.textContent = texto;
-                    chatMensagens.appendChild(mensagemDiv);
-                    chatMensagens.scrollTop = chatMensagens.scrollHeight;
-                }
-                
-                function adicionarMensagemUsuario(texto) {
-                    const mensagemDiv = document.createElement('div');
-                    mensagemDiv.className = 'mensagem mensagem-usuario';
-                    mensagemDiv.textContent = texto;
-                    chatMensagens.appendChild(mensagemDiv);
-                    chatMensagens.scrollTop = chatMensagens.scrollHeight;
-                }
-                
-                function gerarRespostaIA(mensagem) {
-                    const mensagemLower = mensagem.toLowerCase();
-                    
-                    if (mensagemLower.includes('preço') || mensagemLower.includes('valor') || mensagemLower.includes('cota')) {
-                        return "Para dados em tempo real da planilha, abra a página via localhost (http://localhost:8000) em vez de abrir o arquivo diretamente.";
-                    } else if (mensagemLower.includes('localhost') || mensagemLower.includes('cors')) {
-                        return "O erro CORS acontece quando você abre o arquivo HTML diretamente. Use um servidor local como: 'python -m http.server 8000' e acesse http://localhost:8000";
-                    } else {
-                        return "Posso ajudar com informações sobre como conectar com a planilha em tempo real!";
-                    }
-                }
-                
-                function reiniciarTimeout() {
-                    clearTimeout(timeoutChat);
-                    timeoutChat = setTimeout(function() {
-                        adicionarMensagemIA("Encerrando por inatividade. É só me chamar!");
-                        setTimeout(function() {
-                            chatContainer.classList.remove('aberto');
-                            chatMensagens.innerHTML = '';
-                            adicionarMensagemIA("Olá! Eu sou a IARA. Para dados em tempo real, abra via localhost.");
-                        }, 2000);
-                    }, 600000);
                 }
             }
-
-            function inicializarFormulario() {
-                const formContato = document.getElementById('form-contato');
+            
+            function adicionarMensagemIA(texto) {
+                const mensagemDiv = document.createElement('div');
+                mensagemDiv.className = 'mensagem mensagem-ia';
+                mensagemDiv.textContent = texto;
+                chatMensagens.appendChild(mensagemDiv);
+                chatMensagens.scrollTop = chatMensagens.scrollHeight;
+            }
+            
+            function adicionarMensagemUsuario(texto) {
+                const mensagemDiv = document.createElement('div');
+                mensagemDiv.className = 'mensagem mensagem-usuario';
+                mensagemDiv.textContent = texto;
+                chatMensagens.appendChild(mensagemDiv);
+                chatMensagens.scrollTop = chatMensagens.scrollHeight;
+            }
+            
+            function gerarRespostaIA(mensagem) {
+                const mensagemLower = mensagem.toLowerCase();
                 
-                formContato.addEventListener('submit', function(e) {
-                    // O Formspree cuida de tudo, mas podemos adicionar um loading
-                    const botao = formContato.querySelector('.form-botao');
-                    const textoOriginal = botao.innerHTML;
-                    
-                    // Mostra loading
-                    botao.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
-                    botao.disabled = true;
-                    
-                    // Restaura após 3 segundos (caso haja delay)
-                    setTimeout(() => {
-                        botao.innerHTML = textoOriginal;
-                        botao.disabled = false;
-                    }, 3000);
-                });
-                
-                // Adiciona confirmação visual quando o formulário é enviado com sucesso
-                if (window.location.search.includes('formspree=true')) {
-                    alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+                if (mensagemLower.includes('preço') || mensagemLower.includes('valor') || mensagemLower.includes('cota')) {
+                    return "Você pode ver todas as cotações atualizadas na página inicial!";
+                } else if (mensagemLower.includes('favorito')) {
+                    return "Faça login para adicionar produtos aos favoritos e acompanhar suas cotações!";
+                } else if (mensagemLower.includes('login') || mensagemLower.includes('conta')) {
+                    return "Clique em 'Entrar' no menu para fazer login ou criar sua conta!";
+                } else {
+                    return "Posso ajudar com informações sobre cotações, favoritos e sua conta!";
                 }
             }
+            
+            function reiniciarTimeout() {
+                clearTimeout(timeoutChat);
+                timeoutChat = setTimeout(function() {
+                    adicionarMensagemIA("Encerrando por inatividade. É só me chamar!");
+                    setTimeout(function() {
+                        chatContainer.classList.remove('aberto');
+                        chatMensagens.innerHTML = '';
+                        adicionarMensagemIA("Olá! Eu sou a IARA. Como posso ajudar?");
+                    }, 2000);
+                }, 600000);
+            }
+        }
 
-            // INICIAR APLICAÇÃO
-            inicializarApp();
+        // ==================== FORMULÁRIO ====================
+        function inicializarFormulario() {
+            const formContato = document.getElementById('form-contato');
+            
+            formContato.addEventListener('submit', function(e) {
+                const botao = formContato.querySelector('.form-botao');
+                const textoOriginal = botao.innerHTML;
+                
+                botao.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+                botao.disabled = true;
+                
+                setTimeout(() => {
+                    botao.innerHTML = textoOriginal;
+                    botao.disabled = false;
+                }, 3000);
+            });
+            
+            if (window.location.search.includes('formspree=true')) {
+                alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+            }
+        }
 
-            // Função para atualizar dados
-            async function atualizarDados() {
-                console.log('🔄 ATUALIZANDO DADOS...');
-                try {
-                    const novasCotacoes = await buscarDadosPlanilha();
-                    if (novasCotacoes.length > 0) {
-                        const novosDadosReais = novasCotacoes[0].id !== 1 || novasCotacoes.length !== 12;
-                        
-                        cotacoes = novasCotacoes;
-                        usandoDadosReais = novosDadosReais;
-                        inicializarCards();
-                        
-                        console.log('✅ DADOS ATUALIZADOS!');
+        // ==================== INICIALIZAÇÃO ====================
+        async function inicializarApp() {
+            console.log('🎉 PÁGINA CARREGADA - INICIANDO APLICAÇÃO');
+            
+            mostrarLoading(true);
+            
+            try {
+                cotacoes = await buscarDadosPlanilha();
+                usandoDadosReais = cotacoes.length > 0 && (cotacoes[0].id !== 1 || cotacoes.length !== 12);
+                
+                if (usandoDadosReais) {
+                    console.log('✅ DADOS REAIS CARREGADOS DA PLANILHA!');
+                } else {
+                    console.log('⚠️ USANDO DADOS DE EXEMPLO');
+                }
+                
+            } catch (error) {
+                console.error('❌ FALHA:', error);
+                cotacoes = carregarDadosExemplo();
+                usandoDadosReais = false;
+            } finally {
+                observarAuthFirebase();
+                inicializarCards();
+                inicializarGrafico();
+                inicializarChat();
+                inicializarFormulario();
+                mostrarLoading(false);
+                console.log('🏁 APLICAÇÃO INICIALIZADA');
+            }
+        }
+
+        function mostrarLoading(mostrar) {
+            if (mostrar) {
+                const loader = document.createElement('div');
+                loader.id = 'global-loader';
+                loader.innerHTML = `
+                    <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+                                background: rgba(74, 35, 90, 0.95); display: flex; justify-content: center; 
+                                align-items: center; z-index: 9999; color: white; font-family: Arial;">
+                        <div style="background: white; padding: 30px; border-radius: 15px; text-align: center; color: #4a235a; max-width: 400px;">
+                            <div style="font-size: 1.5rem; margin-bottom: 15px; font-weight: bold;">
+                                🍇 Cotações Norte
+                            </div>
+                            <div style="margin-bottom: 20px; font-size: 1.1rem;">
+                                Carregando...
+                            </div>
+                            <div style="width: 50px; height: 50px; border: 5px solid #f3f3f3; 
+                                        border-top: 5px solid #4a235a; border-radius: 50%; 
+                                        animation: spin 1s linear infinite; margin: 0 auto;"></div>
+                        </div>
+                    </div>
+                    <style>
+                        @keyframes spin {
+                            0% { transform: rotate(0deg); }
+                            100% { transform: rotate(360deg); }
+                        }
+                    </style>
+                `;
+                document.body.appendChild(loader);
+            } else {
+                const existingLoader = document.getElementById('global-loader');
+                if (existingLoader) {
+                    existingLoader.remove();
+                }
+            }
+        }
+
+        // Atualizar dados a cada 2 minutos
+        async function atualizarDados() {
+            console.log('🔄 ATUALIZANDO DADOS...');
+            try {
+                const novasCotacoes = await buscarDadosPlanilha();
+                if (novasCotacoes.length > 0) {
+                    cotacoes = novasCotacoes;
+                    inicializarCards();
+                    
+                    if (document.getElementById('favoritos').classList.contains('ativa')) {
+                        renderizarFavoritos();
                     }
-                } catch (error) {
-                    console.log('❌ Falha na atualização:', error);
+                    
+                    console.log('✅ DADOS ATUALIZADOS!');
                 }
+            } catch (error) {
+                console.log('❌ Falha na atualização:', error);
             }
+        }
 
-            // Atualizar a cada 2 minutos
-            setInterval(atualizarDados, 120000);
+        setInterval(atualizarDados, 120000);
 
-            // Também pode chamar manualmente se quiser
-            window.atualizarDadosManualmente = atualizarDados;
-        });
+        // Iniciar aplicação quando o DOM estiver pronto
+        document.addEventListener('DOMContentLoaded', inicializarApp);
     </script>
+    
 </body>
 </html>
